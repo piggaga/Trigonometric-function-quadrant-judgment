@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三角函數象限判斷</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 40px;
+            color: #333;
+            font-size: 2rem;
+            text-align: center;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            margin-top: 200px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 100%;
+            max-width: 500px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .container select, .container button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 100%;
+            text-align: center;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>三角函數象限判斷</h1>
+    
+    <div class="container">
+        <select id="leftFunction">
+            <option value="sin">sin</option>
+            <option value="cos">cos</option>
+            <option value="tan">tan</option>
+        </select>
+        <select id="leftSign">
+            <option value="positive">正</option>
+            <option value="negative">負</option>
+        </select>
+        <button onclick="findQuadrantSingle('leftFunction', 'leftSign', 'leftResult')">判斷象限</button>
+        <div id="leftResult" class="result">結果會顯示在這裡</div>
+    </div>
+
+    <div class="container">
+        <select id="rightFunction1">
+            <option value="sin">sin</option>
+            <option value="cos">cos</option>
+            <option value="tan">tan</option>
+        </select>
+        <select id="rightSign1">
+            <option value="positive">正</option>
+            <option value="negative">負</option>
+        </select>
+        <select id="rightFunction2">
+            <option value="sin">sin</option>
+            <option value="cos">cos</option>
+            <option value="tan">tan</option>
+        </select>
+        <select id="rightSign2">
+            <option value="positive">正</option>
+            <option value="negative">負</option>
+        </select>
+        <button onclick="findQuadrantDouble('rightFunction1', 'rightSign1', 'rightFunction2', 'rightSign2', 'rightResult')">判斷象限</button>
+        <div id="rightResult" class="result">結果會顯示在這裡</div>
+    </div>
+
+    <script>
+        function findQuadrantSingle(functionId, signId, resultId) {
+            const trigFunction = document.getElementById(functionId).value;
+            const sign = document.getElementById(signId).value;
+            const resultDiv = document.getElementById(resultId);
+
+            let quadrant = '';
+            if (trigFunction === 'sin') {
+                quadrant = sign === 'positive' ? '位於第一象限和第二象限 (0° 到 180°)' : '位於第三象限和第四象限 (180° 到 360°)';
+            } else if (trigFunction === 'cos') {
+                quadrant = sign === 'positive' ? '位於第一象限和第四象限 (0° 到 90° 和 270° 到 360°)' : '位於第二象限和第三象限 (90° 到 270°)';
+            } else if (trigFunction === 'tan') {
+                quadrant = sign === 'positive' ? '位於第一象限和第三象限 (0° 到 90° 和 180° 到 270°)' : '位於第二象限和第四象限 (90° 到 180° 和 270° 到 360°)';
+            }
+
+            resultDiv.textContent = `${quadrant}`;
+        }
+
+        function findQuadrantDouble(function1Id, sign1Id, function2Id, sign2Id, resultId) {
+            const trigFunction1 = document.getElementById(function1Id).value;
+            const sign1 = document.getElementById(sign1Id).value;
+            const trigFunction2 = document.getElementById(function2Id).value;
+            const sign2 = document.getElementById(sign2Id).value;
+            const resultDiv = document.getElementById(resultId);
+
+            let quadrant = '';
+            if (trigFunction1 === 'sin' && sign1 === 'positive' && trigFunction2 === 'cos' && sign2 === 'positive') {
+                quadrant = '位於第一象限 (0° 到 90°)';
+            } else if (trigFunction1 === 'sin' && sign1 === 'positive' && trigFunction2 === 'tan' && sign2 === 'positive') {
+                quadrant = '位於第一象限 (0° 到 90°)';
+            } else if (trigFunction1 === 'tan' && sign1 === 'positive' && trigFunction2 === 'sin' && sign2 === 'positive') {
+                quadrant = '位於第一象限 (0° 到 90°)';
+            } else if (trigFunction1 === 'tan' && sign1 === 'positive' && trigFunction2 === 'cos' && sign2 === 'positive') {
+                quadrant = '位於第一象限 (0° 到 90°)';
+            } else if (trigFunction1 === 'cos' && sign1 === 'positive' && trigFunction2 === 'sin' && sign2 === 'positive') {
+                quadrant = '位於第一象限 (0° 到 90°)';
+            } else if (trigFunction1 === 'cos' && sign1 === 'positive' && trigFunction2 === 'tan' && sign2 === 'positive') {
+                quadrant = '位於第一象限 (0° 到 90°)';
+            } else if (trigFunction1 === 'sin' && sign1 === 'positive' && trigFunction2 === 'cos' && sign2 === 'negative') {
+                quadrant = '位於第二象限 (90° 到 180°)';
+            } else if (trigFunction1 === 'sin' && sign1 === 'positive' && trigFunction2 === 'tan' && sign2 === 'negative') {
+                quadrant = '位於第二象限 (90° 到 180°)';
+            } else if (trigFunction1 === 'cos' && sign1 === 'negative' && trigFunction2 === 'sin' && sign2 === 'positive') {
+                quadrant = '位於第二象限 (90° 到 180°)';
+            } else if (trigFunction1 === 'tan' && sign1 === 'negative' && trigFunction2 === 'sin' && sign2 === 'positive') {
+                quadrant = '位於第二象限 (90° 到 180°)';
+            } else if (trigFunction1 === 'cos' && sign1 === 'negative' && trigFunction2 === 'tan' && sign2 === 'negative') {
+                quadrant = '位於第三象限 (180° 到 270°)';
+            } else if (trigFunction1 === 'sin' && sign1 === 'negative' && trigFunction2 === 'cos' && sign2 === 'negative') {
+                quadrant = '位於第三象限 (180° 到 270°)';
+            } else if (trigFunction1 === 'tan' && sign1 === 'negative' && trigFunction2 === 'cos' && sign2 === 'negative') {
+                quadrant = '位於第三象限 (180° 到 270°)';
+            } else if (trigFunction1 === 'tan' && sign1 === 'negative' && trigFunction2 === 'sin' && sign2 === 'negative') {
+                quadrant = '位於第三象限 (180° 到 270°)';
+            } else if (trigFunction1 === 'sin' && sign1 === 'negative' && trigFunction2 === 'tan' && sign2 === 'negative') {
+                quadrant = '位於第三象限 (180° 到 270°)';
+            } else if (trigFunction1 === 'cos' && sign1 === 'negative' && trigFunction2 === 'tan' && sign2 === 'positive') {
+                quadrant = '位於第四象限 (270° 到 360°)';
+            } else if (trigFunction1 === 'sin' && sign1 === 'negative' && trigFunction2 === 'cos' && sign2 === 'positive') {
+                quadrant = '位於第四象限 (270° 到 360°)';
+            } else if (trigFunction1 === 'cos' && sign1 === 'positive' && trigFunction2 === 'sin' && sign2 === 'negative') {
+                quadrant = '位於第四象限 (270° 到 360°)';
+            } else if (trigFunction1 === 'tan' && sign1 === 'positive' && trigFunction2 === 'sin' && sign2 === 'negative') {
+                quadrant = '位於第四象限 (270° 到 360°)';
+            } else if (trigFunction1 === 'sin' && sign1 === 'negative' && trigFunction2 === 'tan' && sign2 === 'positive') {
+                quadrant = '位於第四象限 (270° 到 360°)';
+            } else if (trigFunction1 === 'cos' && sign1 === 'positive' && trigFunction2 === 'tan' && sign2 === 'negative') {
+                quadrant = '位於第四象限 (270° 到 360°)';
+            }
+
+            resultDiv.textContent = `${quadrant}`;
+        }
+    </script>
+</body>
+</html>
