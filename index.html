@@ -12,61 +12,32 @@
             justify-content: center;
             height: 100vh;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-        }
-        h1 {
-            margin-bottom: 40px;
-            color: #333;
-            font-size: 2rem;
-            text-align: center;
-            padding: 10px 20px;
-            background-color: #ffffff;
-            border: 2px solid #007bff;
-            border-radius: 8px;
-            margin-top: 200px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            border: 1px solid #ccc;
+            border: 1px solid #000;
             padding: 20px;
-            width: 100%;
-            max-width: 500px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 40%;
             margin-bottom: 20px;
-            border-radius: 8px;
         }
-        .container select, .container button {
-            margin: 10px 0;
-            padding: 10px;
-            width: 100%;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+        .container select {
+            margin: 10px;
+            padding: 5px;
+            width: 100px; /* 調整下拉列表的寬度 */
         }
         .result {
             margin-top: 20px;
             padding: 10px;
-            border: 1px solid #ccc;
-            width: 100%;
+            border: 1px solid #000;
+            width: 80%;
             text-align: center;
-            background-color: #f9f9f9;
-            border-radius: 4px;
         }
         button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #0056b3;
+            margin-top: 10px;
+            padding: 5px 20px;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -125,7 +96,7 @@
                 quadrant = sign === 'positive' ? '位於第一象限和第三象限 (0° 到 90° 和 180° 到 270°)' : '位於第二象限和第四象限 (90° 到 180° 和 270° 到 360°)';
             }
 
-            resultDiv.textContent = `${quadrant}`;
+            resultDiv.textContent = `${quadrant}`;   
         }
 
         function findQuadrantDouble(function1Id, sign1Id, function2Id, sign2Id, resultId) {
@@ -157,27 +128,35 @@
             } else if (trigFunction1 === 'tan' && sign1 === 'negative' && trigFunction2 === 'sin' && sign2 === 'positive') {
                 quadrant = '位於第二象限 (90° 到 180°)';
             } else if (trigFunction1 === 'cos' && sign1 === 'negative' && trigFunction2 === 'tan' && sign2 === 'negative') {
-                quadrant = '位於第三象限 (180° 到 270°)';
-            } else if (trigFunction1 === 'sin' && sign1 === 'negative' && trigFunction2 === 'cos' && sign2 === 'negative') {
-                quadrant = '位於第三象限 (180° 到 270°)';
+                quadrant = '位於第二象限 (90° 到 180°)';
             } else if (trigFunction1 === 'tan' && sign1 === 'negative' && trigFunction2 === 'cos' && sign2 === 'negative') {
-                quadrant = '位於第三象限 (180° 到 270°)';
-            } else if (trigFunction1 === 'tan' && sign1 === 'negative' && trigFunction2 === 'sin' && sign2 === 'negative') {
-                quadrant = '位於第三象限 (180° 到 270°)';
-            } else if (trigFunction1 === 'sin' && sign1 === 'negative' && trigFunction2 === 'tan' && sign2 === 'negative') {
-                quadrant = '位於第三象限 (180° 到 270°)';
-            } else if (trigFunction1 === 'cos' && sign1 === 'negative' && trigFunction2 === 'tan' && sign2 === 'positive') {
-                quadrant = '位於第四象限 (270° 到 360°)';
-            } else if (trigFunction1 === 'sin' && sign1 === 'negative' && trigFunction2 === 'cos' && sign2 === 'positive') {
-                quadrant = '位於第四象限 (270° 到 360°)';
+                quadrant = '位於第二象限 (90° 到 180°)';
             } else if (trigFunction1 === 'cos' && sign1 === 'positive' && trigFunction2 === 'sin' && sign2 === 'negative') {
-                quadrant = '位於第四象限 (270° 到 360°)';
-            } else if (trigFunction1 === 'tan' && sign1 === 'positive' && trigFunction2 === 'sin' && sign2 === 'negative') {
-                quadrant = '位於第四象限 (270° 到 360°)';
-            } else if (trigFunction1 === 'sin' && sign1 === 'negative' && trigFunction2 === 'tan' && sign2 === 'positive') {
                 quadrant = '位於第四象限 (270° 到 360°)';
             } else if (trigFunction1 === 'cos' && sign1 === 'positive' && trigFunction2 === 'tan' && sign2 === 'negative') {
                 quadrant = '位於第四象限 (270° 到 360°)';
+            } else if (trigFunction1 === 'sin' && sign1 === 'negative' && trigFunction2 === 'cos' && sign2 === 'positive') {
+                quadrant = '位於第四象限 (270° 到 360°)';
+            } else if (trigFunction1 === 'tan' && sign1 === 'negative' && trigFunction2 === 'cos' && sign2 === 'positive') {
+                quadrant = '位於第四象限 (270° 到 360°)';
+            } else if (trigFunction1 === 'sin' && sign1 === 'negative' && trigFunction2 === 'tan' && sign2 === 'negative') {
+                quadrant = '位於第四象限 (270° 到 360°)';
+            } else if (trigFunction1 === 'tan' && sign1 === 'negative' && trigFunction2 === 'sin' && sign2 === 'negative') {
+                quadrant = '位於第四象限 (270° 到 360°)';
+            } else if (trigFunction1 === 'tan' && sign1 === 'positive' && trigFunction2 === 'sin' && sign2 === 'negative') {
+                quadrant = '位於第三象限 (180° 到 270°)';
+            } else if (trigFunction1 === 'tan' && sign1 === 'positive' && trigFunction2 === 'cos' && sign2 === 'negative') {
+                quadrant = '位於第三象限 (180° 到 270°)';
+            } else if (trigFunction1 === 'sin' && sign1 === 'negative' && trigFunction2 === 'tan' && sign2 === 'positive') {
+                quadrant = '位於第三象限 (180° 到 270°)';
+            } else if (trigFunction1 === 'cos' && sign1 === 'negative' && trigFunction2 === 'tan' && sign2 === 'positive') {
+                quadrant = '位於第三象限 (180° 到 270°)';
+            } else if (trigFunction1 === 'sin' && sign1 === 'negative' && trigFunction2 === 'cos' && sign2 === 'negative') {
+                quadrant = '位於第三象限 (180° 到 270°)';
+            } else if (trigFunction1 === 'cos' && sign1 === 'negative' && trigFunction2 === 'sin' && sign2 === 'negative') {
+                quadrant = '位於第三象限 (180° 到 270°)';
+            } else {
+                quadrant = '輸入無效，請檢查輸入的三角函數和符號';
             }
 
             resultDiv.textContent = `${quadrant}`;
